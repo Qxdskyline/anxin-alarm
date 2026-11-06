@@ -341,7 +341,7 @@ public final class MainActivity extends Activity {
                                 new Intent(
                                         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                                         Uri.parse("package:" + getPackageName()))));
-        Ui.addText(p, "安心闹钟 2.5.0", 12, Ui.MUTED, false);
+        Ui.addText(p, "安心闹钟 2.5.1", 12, Ui.MUTED, false);
         Ui.showSheet(this, Ui.sheet(this, "安心响铃", "声音、提醒和日历，按你的习惯来", p));
     }
 
@@ -377,7 +377,7 @@ public final class MainActivity extends Activity {
         } catch (RuntimeException ignored) { }
     }
     private void showAlarmTrace() {
-        StringBuilder report = new StringBuilder("安心闹钟 2.5.0\n");
+        StringBuilder report = new StringBuilder("安心闹钟 2.5.1\n");
         report.append("可靠模式=").append(AlarmReliability.enabled(this))
                 .append(" 保护服务运行=").append(AlarmGuardService.running).append("\n");
         report.append(Build.MANUFACTURER).append(" ").append(Build.MODEL)

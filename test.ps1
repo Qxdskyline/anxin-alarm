@@ -9,7 +9,7 @@ $sources = @(Get-ChildItem "$PSScriptRoot\tests" -Recurse -Filter *.java | ForEa
 if ($LASTEXITCODE -ne 0) { throw 'Test compilation failed' }
 Push-Location $PSScriptRoot
 try {
-    & "$Jdk\bin\java.exe" -cp "$PSScriptRoot\work\testclasses;$JsonJar" cn.local.oneshotalarm.AlarmTests "$PSScriptRoot\2026年中国大陆调休日历.json"
+    & "$Jdk\bin\java.exe" -cp "$PSScriptRoot\work\testclasses;$JsonJar" cn.local.oneshotalarm.AlarmTests "$PSScriptRoot\2026年中国大陆调休日历.json" "$PSScriptRoot\2027年中国大陆调休日历.json"
     if ($LASTEXITCODE -ne 0) { throw 'Behavior tests failed' }
     & "$Jdk\bin\java.exe" -cp "$PSScriptRoot\work\testclasses;$JsonJar" cn.local.oneshotalarm.RefactorTests
     if ($LASTEXITCODE -ne 0) { throw 'Refactor tests failed' }

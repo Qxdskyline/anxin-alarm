@@ -26,6 +26,23 @@ final class HolidayCalendar implements Schedule.WorkCalendar {
                         "2026-09-20",
                         "2026-10-10")) y.put(d, true);
         years.put(2026, y);
+
+        y = new HashMap<>();
+        off(y, "2027-01-01", "2027-01-03");
+        off(y, "2027-02-05", "2027-02-13");
+        off(y, "2027-04-03", "2027-04-05");
+        off(y, "2027-05-01", "2027-05-05");
+        off(y, "2027-06-09", "2027-06-09");
+        off(y, "2027-09-15", "2027-09-15");
+        off(y, "2027-10-01", "2027-10-07");
+        for (String d : Arrays.asList(
+                "2027-01-31",
+                "2027-02-14",
+                "2027-05-08",
+                "2027-09-26",
+                "2027-10-09")) y.put(d, true);
+        years.put(2027, y);
+
         if (imported != null) {
             Iterator<String> keys = imported.keys();
             while (keys.hasNext()) {

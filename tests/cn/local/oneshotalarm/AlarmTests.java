@@ -161,7 +161,7 @@ public class AlarmTests {
                         == at("2026-10-04T07:30"),
                 "Sunday mask mapping");
         check(
-                next("WORK", 0, "", Collections.emptySet(), "2026-12-31T08:00") == 0,
+                next("WORK", 0, "", Collections.emptySet(), "2027-12-31T08:00") == 0,
                 "unknown year never guessed");
         check(
                 next("ONCE", 0, "2026-10-22", Collections.emptySet(), "2026-10-22T07:30") == 0,
@@ -468,6 +468,20 @@ public class AlarmTests {
                             != day.getBoolean("isOffDay");
         }
         check(same, "delivered calendar file matches all 39 builtin official overrides");
+        JSONObject official2027 = new JSONObject(new String(Files.readAllBytes(Paths.get(args[1])),
+                java.nio.charset.StandardCharsets.UTF_8));
+        JSONObject expected2027 = HolidayCalendar.parseImport(official2027).getJSONObject("map");
+        Map<String, Boolean> actual2027 = cal.years.get(2027);
+        boolean same2027 = actual2027.size() == 34 && expected2027.length() == 34;
+        for (String date : expected2027.keySet())
+            same2027 &= Boolean.valueOf(expected2027.getBoolean(date)).equals(actual2027.get(date));
+        check(same2027, "all 34 official 2027 dates match the built-in calendar");
+        check(next("WORK", 0, "", Collections.emptySet(), "2026-12-31T08:00")
+                        == at("2027-01-04T07:30"),
+                "workday alarms skip the 2027 New Year holiday across the year boundary");
+        check(next("WORK", 0, "", Collections.emptySet(), "2027-01-29T08:00")
+                        == at("2027-01-31T07:30"),
+                "workday alarm rings on the 2027 Spring Festival makeup Sunday");
         c = new C();
         a = fresh(c);
         a.plan.loop = true;
