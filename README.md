@@ -109,5 +109,5 @@ https://developer.android.com/develop/ui/views/notifications/time-sensitive
 
 
 ## 2.4.0
-当前版本包含过期计划恢复与用户授权的可靠模式。新增 AlarmGuardService、AlarmReliability、AlarmProtectionPolicy；可靠模式有活动闹钟时保留静音前台通知、无轮询和持续唤醒锁。具体行为、129 项逻辑检查与实机验证边界见 2.4.0-修复说明.md。
+当前版本包含过期计划恢复与用户授权的可靠模式。新增 AlarmGuardService、AlarmReliability、AlarmProtectionPolicy；可靠模式有活动闹钟时保留静音前台通知、无轮询和持续唤醒锁。
 
